@@ -4,22 +4,11 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: pradeep-portfolio
+    ports:
+      - "127.0.0.1:3000:3000"
     environment:
       NODE_ENV: production
       NEXT_TELEMETRY_DISABLED: "1"
       PORT: "3000"
       HOSTNAME: "0.0.0.0"
     restart: unless-stopped
-    expose:
-      - "3000"
-
-  nginx:
-    image: nginx:stable-alpine
-    container_name: pradeep-nginx
-    depends_on:
-      - portfolio
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:8080:80"
-    volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
