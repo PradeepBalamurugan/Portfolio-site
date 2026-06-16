@@ -6,7 +6,7 @@ export const siteConfig = {
   tagline: "Engineering scalable systems that bridge the gap between business logic and beautiful user experiences.",
   email: "pradeepbalamurugan22@gmail.com",
   // phone is intentionally omitted — never rendered and should not ship in the client bundle
-  linkedin: "https://linkedin.com/in/pradeepbalamurugan",
+  linkedin: "https://www.linkedin.com/in/pradeep-balamurugan/",
   github: "https://github.com/pradeepbalamurugan",
   location: "India • Open to relocate",
   // Points to the secure server-side route handler using a strict allowlist
