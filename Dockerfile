@@ -8,6 +8,12 @@ RUN npm ci
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED=1
+
+# Provide a dummy API key during build so `next build` won't crash if any
+# library validates env vars at import time. The real key is injected at runtime.
+ARG RESEND_API_KEY=re_dummy_build_placeholder
+ENV RESEND_API_KEY=${RESEND_API_KEY}
+
 RUN npm run build
 
 # ---- Stage 2: Runner ----
