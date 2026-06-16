@@ -24,10 +24,16 @@ export default function Contact() {
       });
 
       if (!res.ok) {
+        const errorData = await res.json().catch(() => null);
         if (res.status === 429) {
           throw new Error("Too many requests. Please try again later.");
         }
-        throw new Error("Failed to send message. Please check your inputs.");
+        // Show validation errors if available
+        if (errorData?.errors) {
+          const fieldErrors = Object.values(errorData.errors).flat().join(", ");
+          throw new Error(fieldErrors || "Please check your inputs.");
+        }
+        throw new Error(errorData?.message || "Failed to send message. Please try again later.");
       }
 
       setStatus("sent");

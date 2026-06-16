@@ -39,8 +39,20 @@ export async function POST(req: Request) {
 
     // 3. Handle Resend API failures
     if (error) {
-      console.error("Resend API Error:", error);
-      // Return a generic error to avoid leaking email infrastructure details
+      console.error("Resend API Error:", JSON.stringify(error, null, 2));
+      
+      const errorMessage = error.message || "Failed to send message. Please try again later.";
+      
+      // Check for common Resend free-tier restriction
+      if (errorMessage.toLowerCase().includes("verify") || 
+          errorMessage.toLowerCase().includes("not allowed") ||
+          errorMessage.toLowerCase().includes("domain")) {
+        return NextResponse.json(
+          { success: false, message: "Email service configuration issue. The site owner needs to verify their sending domain." },
+          { status: 500 }
+        );
+      }
+      
       return NextResponse.json(
         { success: false, message: "Failed to send message. Please try again later." },
         { status: 500 }
