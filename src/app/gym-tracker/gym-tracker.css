@@ -1,0 +1,226 @@
+/* ---------------------------------------------------------------------------
+ * Gym Tracker — Custom Styles
+ * Animations and utilities specific to the gym tracker module.
+ * Imported only in the gym-tracker layout, keeping portfolio styles untouched.
+ * --------------------------------------------------------------------------- */
+
+/* Step transition animation */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes shimmer-bg {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Utility classes */
+.gym-slide-in-right {
+  animation: slide-in-right 0.4s ease-out;
+}
+
+.gym-slide-in-left {
+  animation: slide-in-left 0.4s ease-out;
+}
+
+.gym-fade-in-up {
+  animation: fade-in-up 0.5s ease-out;
+}
+
+.gym-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.gym-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+.gym-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Calendar day hover effect */
+.gym-calendar-day {
+  transition: all 0.15s ease;
+}
+
+.gym-calendar-day:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+/* Card entrance stagger — applied via style attribute with animation-delay */
+.gym-card-enter {
+  animation: fade-in-up 0.5s ease-out both;
+}
+
+/* Comparison value animations */
+.gym-comparison-improved {
+  color: #22c55e;
+  animation: fade-in 0.3s ease-out;
+}
+
+.gym-comparison-declined {
+  color: #ef4444;
+  animation: fade-in 0.3s ease-out;
+}
+
+.gym-comparison-same {
+  color: #9ca3af;
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Quote transition */
+.gym-quote-enter {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+/* Exercise card collapse/expand */
+.gym-collapsible {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.gym-collapsible-open {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.gym-collapsible-closed {
+  max-height: 0;
+  opacity: 0;
+}
+
+/* Modal overlay */
+.gym-modal-overlay {
+  animation: fade-in 0.2s ease-out;
+}
+
+.gym-modal-content {
+  animation: scale-in 0.2s ease-out;
+}
+
+/* Sticky bottom bar shadow */
+.gym-sticky-bottom {
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark .gym-sticky-bottom {
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Scrollbar styling for gym tracker sections */
+.gym-scrollable::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.gym-scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gym-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.3);
+  border-radius: 999px;
+}
+
+.dark .gym-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Progress stat card gradient backgrounds */
+.gym-stat-blue {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.05));
+}
+
+.gym-stat-green {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.05));
+}
+
+.gym-stat-purple {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(168, 85, 247, 0.05));
+}
+
+.gym-stat-orange {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.1), rgba(245, 158, 11, 0.05));
+}
+
+.dark .gym-stat-blue {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.03));
+}
+
+.dark .gym-stat-green {
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(16, 185, 129, 0.03));
+}
+
+.dark .gym-stat-purple {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), rgba(168, 85, 247, 0.03));
+}
+
+.dark .gym-stat-orange {
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.08), rgba(245, 158, 11, 0.03));
+}

@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { useTheme } from "@/lib/theme-provider";
 import { navLinks, siteConfig } from "@/lib/data";
 import { Menu, X, Sun, Moon } from "lucide-react";
 
 export default function Navbar() {
+  const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -34,6 +36,11 @@ export default function Navbar() {
 
   const scrollTo = (href: string) => {
     setIsMobileMenuOpen(false);
+    // Route-based links navigate via Next.js router
+    if (href.startsWith("/")) {
+      router.push(href);
+      return;
+    }
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };

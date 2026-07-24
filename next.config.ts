@@ -41,7 +41,7 @@ const securityHeaders = [
       // next/font inlines font data-URIs; keep fonts.gstatic.com for fallback
       "font-src 'self' https://fonts.gstatic.com data:",
       // Next.js hydration needs 'unsafe-inline'; 'unsafe-eval' needed for dev HMR only
-      "script-src 'self' 'unsafe-inline'",
+      `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""}`,
       // Images: self + data URIs (for inline SVGs/favicons)
       "img-src 'self' data: blob:",
       // No external API calls from this portfolio
